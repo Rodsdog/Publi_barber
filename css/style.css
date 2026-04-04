@@ -1,0 +1,154 @@
+/* CAVALHEIROS S/A - VERSÃO FINAL TV 42"
+   Alinhamento de 3 colunas, margem de 1.5% e carrossel dinâmico.
+*/
+
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #161616;
+    --accent-color: #C6A74B;
+    --text-color: #f5f5f5;
+    --border-color: #2a2a2a;
+    --font-main: 'Oswald', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.5vh 1.5vw; /* A margem que você pediu */
+}
+
+header, main, footer { width: 100%; margin-bottom: 1.2vh; }
+
+/* HEADER */
+header {
+    height: 12vh;
+    background: var(--card-bg);
+    border-bottom: 3px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    padding: 0 2vw;
+    gap: 4vw;
+    border-radius: 8px;
+}
+.logo-container img { max-height: 8vh; width: auto; }
+.header-info { display: flex; gap: 3vw; font-size: 1.1vw; }
+.label { color: var(--accent-color); font-weight: bold; text-transform: uppercase; font-size: 0.8vw; display: block; }
+
+/* CORPO */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vh;
+    min-height: 0;
+}
+
+.block {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-title {
+    font-family: var(--font-main);
+    color: var(--accent-color);
+    padding: 1vh 2vw;
+    font-size: 1.8vw;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* GRADE DE 3 COLUNAS FIXAS */
+.grid-9-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1vh 4vw;
+    padding: 1.5vh 2vw;
+    flex: 1;
+}
+.grid-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5vw;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5vh;
+    font-family: var(--font-main);
+    white-space: nowrap;
+}
+.preco { color: var(--accent-color); font-weight: bold; margin-left: 1vw; }
+
+/* VITRINE VISUAL (CARROSSEL) */
+.vitrine-visual {
+    flex: 1.5; /* Aumentei um pouco o destaque para a TV */
+    position: relative;
+    overflow: hidden;
+}
+.track { display: flex; width: 100%; height: 100%; transition: transform 1s ease-in-out; }
+.carrossel-item { min-width: 100%; height: 100%; position: relative; }
+.carrossel-item img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+/* RODAPÉ */
+footer {
+    height: 16vh;
+    background: var(--card-bg);
+    border-top: 3px solid var(--accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 0;
+}
+.qr-group { display: flex; justify-content: space-evenly; width: 100%; padding: 0 2vw; }
+.qr-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5vh; }
+.qr-item img { height: 9vh; width: auto; background: #fff; padding: 8px; border-radius: 8px; }
+.qr-item span { color: var(--accent-color); font-weight: bold; font-family: var(--font-main); font-size: 0.9vw; text-transform: uppercase; }
+
+/* ANIMAÇÃO APENAS PARA O TEXTO DO PREÇO */
+@keyframes brilho-dourado {
+    0% { 
+        text-shadow: 0 0 0px rgba(198, 167, 75, 0);
+        opacity: 1;
+    }
+    50% { 
+        text-shadow: 0 0 10px rgba(198, 167, 75, 0.8);
+        opacity: 0.8;
+        transform: scale(1.05); /* Dá um leve destaque no tamanho */
+    }
+    100% { 
+        text-shadow: 0 0 0px rgba(198, 167, 75, 0);
+        opacity: 1;
+    }
+}
+
+.preco {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-left: 1vw;
+    display: inline-block; /* Necessário para o 'transform' e animação funcionarem bem */
+    
+    /* APLICA A ANIMAÇÃO */
+    animation: brilho-dourado 9s infinite ease-in-out;
+    
+    /* Garante que a animação seja suave na TV */
+    transition: all 0.9s ease;
+}

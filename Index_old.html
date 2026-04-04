@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavalheiros SA - Menu TV</title>
+    <style>
+        /* Estilos Globais (Mantidos) */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #f1c40f;
+            --border-color: #333;
+            --font-family: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+
+        /* TOPO FIXO (Mantido) */
+        header {
+            background-color: var(--card-bg);
+            padding: 10px 40px;
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            flex-shrink: 0;
+        }
+
+        .logo img { max-height: 65px; width: auto; }
+
+        .info-header { display: flex; gap: 25px; font-size: 0.85em; text-align: right; }
+        .info-label { font-weight: bold; color: var(--accent-color); margin-bottom: 2px; display: block; }
+
+        /* CONTEÚDO CENTRAL (Flexbox vertical) */
+        main {
+            flex: 1; 
+            padding: 20px 50px;
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;
+            overflow-y: auto; 
+        }
+
+        /* Estilo comum para blocos (Ajustado para Destaque Total) */
+        .block {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0; 
+            width: 100%;
+        }
+
+        /* Bloco com padding interno para texto */
+        .block-text {
+            padding: 15px 25px;
+        }
+
+        /* Bloco para imagem que preenche tudo */
+        .block-full {
+            overflow: hidden; /* Garante que a imagem não saia do bloco */
+        }
+
+        .block-title {
+            font-family: var(--font-family);
+            font-size: 1.2em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        /* BLOCO 1: SERVIÇOS (Largo com 2 colunas de texto) (Mantido) */
+        .todos-servicos { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px 40px; 
+            font-size: 1.1em; 
+        }
+        .servico-item { 
+            display: flex; 
+            justify-content: space-between; 
+            border-bottom: 1px solid #333;
+        }
+        .servico-preco { color: var(--accent-color); font-weight: bold; }
+
+        /* NOVO BLOCO 2: DESTAQUE TOTAL DO PRODUTO (Preenche 100%) */
+        .produto-destaque img {
+            width: 100%;
+            height: auto; /* Mantém a proporção da imagem */
+            display: block; /* Remove espaços vazios abaixo da imagem */
+            border: none; /* Imagem preenche tudo */
+        }
+
+        /* RODAPÉ FIXO (Mantido) */
+        footer {
+            background-color: var(--card-bg);
+            padding: 10px;
+            border-top: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 130px;
+            flex-shrink: 0;
+        }
+
+        .qrcode-item { text-align: center; }
+        .qrcode-item img {
+            width: 80px; 
+            height: 80px;
+            background: white;
+            padding: 3px;
+            margin-bottom: 5px;
+        }
+        .qrcode-label { font-size: 0.7em; color: var(--accent-color); font-weight: bold; display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><img src="img/logo_png.png" alt="Cavalheiros SA"></div>
+        <div class="info-header">
+            <div class="info-block"><span class="info-label">INSTAGRAM</span>@cavalheirossabarbearia</div>
+            <div class="info-block"><span class="info-label">WHATSAPP</span>(11) 9 8096-9119</div>
+            <div class="info-block"><span class="info-label">HORÁRIOS</span>Seg-Sab: 09h-20h | Dom: 09h-14h</div>
+            <div class="info-block"><span class="info-label">PAGAMENTO</span>Pix, Débito e Crédito</div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="block block-text">
+            <h2 class="block-title">Nossos Serviços</h2>
+            <div class="todos-servicos">
+                <div class="servico-item"><span>Corte Social</span><span class="servico-preco">R$ 40</span></div>
+                <div class="servico-item"><span>Sobrancelha</span><span class="servico-preco">R$ 15</span></div>
+                <div class="servico-item"><span>Corte + Barba</span><span class="servico-preco">R$ 80</span></div>
+                <div class="servico-item"><span>Pezinho</span><span class="servico-preco">R$ 10</span></div>
+                <div class="servico-item"><span>Luzes / Mechas</span><span class="servico-preco">R$ 100</span></div>
+                <div class="servico-item"><span>Pigmentação</span><span class="servico-preco">R$ 30</span></div>
+            </div>
+        </section>
+
+        <section class="block block-full produto-destaque">
+            <img src="img/prods/pomada.png" alt="Infinity Classic Barber Pomade Matte">
+            <img src="img/prods/toppik.png" alt="Infinity Classic Barber Pomade Matte">
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="qrcode-item"><img src="img/qr-whats.png"><span class="qrcode-label">WHATSAPP</span></div>
+        <div class="qrcode-item"><img src="img/qr-insta.png"><span class="qrcode-label">INSTAGRAM</span></div>
+        <div class="qrcode-item"><img src="img/qr-pix.png"><span class="qrcode-label">PIX</span></div>
+        <div class="qrcode-item"><img src="img/qr-wifi.png"><span class="qrcode-label">WI-FI</span></div>
+        <div class="qrcode-item"><img src="img/qr-google.png"><span class="qrcode-label">AVALIE-NOS</span></div>
+    </footer>
+
+</body>
+</html>
